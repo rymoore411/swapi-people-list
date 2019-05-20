@@ -28,6 +28,7 @@ async function starWars (){
     //displays all characters in list
     let html = people.map(nm => `<li>${nm}</li>`).join('');
     const selector = document.querySelector('ul');
+    console.log(selector);
     selector.innerHTML = html;
 
     //add listeners
@@ -39,6 +40,7 @@ async function starWars (){
       peopleObj.forEach((el, idx) => {
         el.forEach(personInfo => {
           if(personInfo.name === personSelect){
+            ev.target.style.fontWeight = 'bold';
             console.log(personInfo);
             let infoList = Object.keys(personInfo).map(key => `
             <div><b>${key }</b> ${personInfo[key]}</div>`).join("");
@@ -46,7 +48,6 @@ async function starWars (){
             div.innerHTML = infoList;
           }
         });
-
       });
      });
 
