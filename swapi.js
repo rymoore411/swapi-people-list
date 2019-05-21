@@ -1,6 +1,7 @@
 
 
 async function starWars (){
+try{
   let response = await fetch('https://swapi.co/api/people/');
   let data = await response.json();
   let allPeople = [];
@@ -38,10 +39,6 @@ async function starWars (){
       }
       ev.target.classList = "bolder";
 
-      //console.log(boldSelector[0].classList);
-      //ev.target.classList = "";
-
-
       peopleObj.forEach((el, idx) => {
         el.forEach(personInfo => {
           if(personInfo.name === personSelect){
@@ -55,6 +52,10 @@ async function starWars (){
 
 
      });
+    }
+catch{
+  console.log('error');
+}
 
 }
 
