@@ -13,7 +13,6 @@ async function starWars (){
     allPeople.push(person);
     response = await fetch(data.next);
     data = await response.json();
-
   }
 
     //get all characters in single array
@@ -30,15 +29,22 @@ async function starWars (){
     selector.innerHTML = html;
 
     //add listeners
-    let personInfo;
-
     selector.addEventListener('click', (ev) => {
       let personSelect = ev.target.innerHTML;
+
+      const boldSelector = document.getElementsByClassName('bolder');
+      if(boldSelector[0]){
+        boldSelector[0].className = "";
+      }
+      ev.target.classList = "bolder";
+
+      //console.log(boldSelector[0].classList);
+      //ev.target.classList = "";
+
 
       peopleObj.forEach((el, idx) => {
         el.forEach(personInfo => {
           if(personInfo.name === personSelect){
-            ev.target.style.fontWeight = 'bold';
             let infoList = Object.keys(personInfo).map(key => `
             <div><b>${key }</b> ${personInfo[key]}</div>`).join("");
             let div = document.getElementById('info');
@@ -46,6 +52,8 @@ async function starWars (){
           }
         });
       });
+
+
      });
 
 }
